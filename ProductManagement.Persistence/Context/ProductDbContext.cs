@@ -2,6 +2,7 @@
 using ProductManagement.Domain.Bases;
 using ProductManagement.Domain.Entities;
 using System;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,6 +13,13 @@ namespace ProductManagement.Persistence.Context
 		public ProductDbContext(DbContextOptions<ProductDbContext> options) : base(options)
 		{
 
+		}
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			base.OnModelCreating(modelBuilder);
+
+			modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 		}
 
 		public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
