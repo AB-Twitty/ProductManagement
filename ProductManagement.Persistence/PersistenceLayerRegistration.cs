@@ -16,6 +16,8 @@ namespace ProductManagement.Persistence
 
 			services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
+			services.AddTransient<ICategoryRepository, CategoryRepository>();
+
 			return services;
 		}
 	}

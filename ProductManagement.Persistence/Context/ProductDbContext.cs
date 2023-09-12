@@ -27,7 +27,6 @@ namespace ProductManagement.Persistence.Context
 				}
 			}
 
-
 			return base.SaveChangesAsync(cancellationToken);
 		}
 

@@ -8,6 +8,7 @@ namespace ProductManagement.Persistence.Repositories.Abstracts
 	public interface IGenericRepository<T> where T : class
 	{
 		Task<T> GetByIdAsync(string Id);
+		Task<ICollection<T>> GetAllAsync();
 		Task<T> AddAsync(T entity);
 		Task AddRangeAsync(ICollection<T> entities);
 		Task UpdateAsync(T entity);

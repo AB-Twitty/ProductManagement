@@ -52,6 +52,11 @@ namespace ProductManagement.Persistence.Repositories
 			await _context.SaveChangesAsync();
 		}
 
+		public async Task<ICollection<T>> GetAllAsync()
+		{
+			return await _context.Set<T>().ToListAsync();
+		}
+
 		public async Task<T> GetByIdAsync(string Id)
 		{
 			return await _context.Set<T>().FindAsync(Id);
