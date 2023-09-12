@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ProductManagement.Persistence;
+using ProductManagement.Service;
 
 namespace ProductManagement.API
 {
@@ -28,6 +29,7 @@ namespace ProductManagement.API
 			});
 
 			services.ConfigurePersistenceLayer(Configuration);
+			services.ConfigureServiceLayer();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
