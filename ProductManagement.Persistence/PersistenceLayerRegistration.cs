@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProductManagement.Persistence.Context;
+using ProductManagement.Persistence.Repositories;
+using ProductManagement.Persistence.Repositories.Abstracts;
 
 namespace ProductManagement.Persistence
 {
@@ -12,6 +14,7 @@ namespace ProductManagement.Persistence
 			services.AddDbContext<ProductDbContext>(options =>
 				options.UseSqlServer(configuration.GetConnectionString("ProductConnectionString")));
 
+			services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 			return services;
 		}

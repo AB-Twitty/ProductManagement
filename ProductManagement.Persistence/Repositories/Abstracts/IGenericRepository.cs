@@ -18,6 +18,6 @@ namespace ProductManagement.Persistence.Repositories.Abstracts
 		IQueryable<T> GetTableAsTracking();
 		IDbContextTransaction BeginTransaction();
 		void CommitTransaction();
-		void RollBackTranaction();
+		void RollbackTranaction();
 	}
 }
