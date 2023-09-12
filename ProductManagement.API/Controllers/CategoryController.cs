@@ -1,5 +1,4 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ProductManagement.Core.Features.Category.Requests.Queries;
 using ProductManagement.Domain.MetaData;
 using System.Threading.Tasks;
@@ -7,21 +6,14 @@ using System.Threading.Tasks;
 namespace ProductManagement.API.Controllers
 {
 	[ApiController]
-	public class CategoryController : ControllerBase
+	public class CategoryController : ApiBaseController
 	{
-		private readonly IMediator _mediator;
-
-		public CategoryController(IMediator mediator)
-		{
-			_mediator = mediator;
-		}
-
 		[HttpGet(Router.CategoryRouting.List)]
 		public async Task<IActionResult> GetCategories() =>
-			Ok(await _mediator.Send(new GetCategoryListQuery()));
+			Respond(await Mediator.Send(new GetCategoryListQuery()));
 
 		[HttpGet(Router.CategoryRouting.GetById)]
 		public async Task<IActionResult> GetCategoryById(string id) =>
-			Ok(await _mediator.Send(new GetCategoryQuery { Id = id }));
+			Respond(await Mediator.Send(new GetCategoryQuery { Id = id }));
 	}
 }

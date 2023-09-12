@@ -22,7 +22,11 @@ namespace ProductManagement.Core.Features.Category.Handlers.Queries
 
 		public async Task<Response<CategoryDto>> Handle(GetCategoryQuery request, CancellationToken cancellationToken)
 		{
-			return Success(_mapper.Map<CategoryDto>(await _categoryService.GetCategoryById(request.Id)));
+			var category = await _categoryService.GetCategoryById(request.Id);
+			if (category == null)
+				return NotFound<CategoryDto>();
+
+			return Success(_mapper.Map<CategoryDto>(category));
 		}
 	}
 }
