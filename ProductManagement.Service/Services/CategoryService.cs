@@ -32,7 +32,8 @@ namespace ProductManagement.Service.Services
 
 		public async Task<Category> GetCategoryById(string Id)
 		{
-			return await _categoryRepo.GetByIdAsync(Id);
+			var x = await _categoryRepo.GetByIdAsync(Id);
+			return x;
 		}
 	}
 }

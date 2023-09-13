@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Storage;
 using ProductManagement.Persistence.Context;
 using ProductManagement.Persistence.Repositories.Abstracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -59,7 +60,7 @@ namespace ProductManagement.Persistence.Repositories
 
 		public async Task<T> GetByIdAsync(string Id)
 		{
-			return await _context.Set<T>().FindAsync(Id);
+			return await _context.Set<T>().FindAsync(Guid.Parse(Id));
 		}
 
 		public IQueryable<T> GetTableAsTracking()

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using ProductManagement.Domain.Bases;
 using ProductManagement.Domain.Entities;
 using System;
@@ -28,11 +29,6 @@ namespace ProductManagement.Persistence.Context
 			{
 				entity.Entity.UpdatedBy = "Admin";
 				entity.Entity.LastUpdatedDate = DateTime.UtcNow;
-
-				if (entity.State == EntityState.Added)
-				{
-					entity.Entity.Id = Guid.NewGuid().ToString();
-				}
 			}
 
 			return base.SaveChangesAsync(cancellationToken);

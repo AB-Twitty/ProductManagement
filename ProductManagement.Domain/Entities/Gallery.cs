@@ -1,4 +1,5 @@
 ﻿using ProductManagement.Domain.Bases;
+using System;
 
 namespace ProductManagement.Domain.Entities
 {
@@ -7,7 +8,7 @@ namespace ProductManagement.Domain.Entities
 		public string ImagePath { get; set; }
 		public string Placeholder { get; set; }
 		public bool IsThumbnail { get; set; }
-		public string ProductId { get; set; }
+		public Guid ProductId { get; set; }
 		public virtual Product Product { get; set; }
 	}
 }

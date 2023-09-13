@@ -1,4 +1,5 @@
 ﻿using ProductManagement.Domain.Bases;
+using System;
 using System.Collections.Generic;
 
 namespace ProductManagement.Domain.Entities
@@ -11,7 +12,7 @@ namespace ProductManagement.Domain.Entities
 		}
 
 		public string Name { get; set; }
-		public string CategoryId { get; set; }
+		public Guid CategoryId { get; set; }
 		public virtual Category Category { get; set; }
 
 		public virtual ICollection<Product> Products { get; set; }

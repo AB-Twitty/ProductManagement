@@ -1,4 +1,5 @@
 ﻿using ProductManagement.Domain.Bases;
+using System;
 
 namespace ProductManagement.Domain.Entities
 {
@@ -6,9 +7,9 @@ namespace ProductManagement.Domain.Entities
 	{
 		public string Value { get; set; }
 		public decimal IncreasedPrice { get; set; } = 0;
-		public string VarientId { get; set; }
+		public Guid VarientId { get; set; }
 		public virtual Varient Varient { get; set; }
-		public string ProductId { get; set; }
+		public Guid ProductId { get; set; }
 		public virtual Product Product { get; set; }
 	}
 }

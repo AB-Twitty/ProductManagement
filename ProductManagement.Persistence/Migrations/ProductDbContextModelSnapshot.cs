@@ -21,8 +21,9 @@ namespace ProductManagement.Persistence.Migrations
 
             modelBuilder.Entity("ProductManagement.Domain.Entities.Category", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -46,7 +47,7 @@ namespace ProductManagement.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1cd7b23b-cb2e-4602-bcbf-edd148bde44b",
+                            Id = new Guid("d05a1d73-faf4-4223-9421-a7a489dfc185"),
                             Description = "This category will hold products characterised as electronics.",
                             IsActive = true,
                             LastUpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -54,7 +55,7 @@ namespace ProductManagement.Persistence.Migrations
                         },
                         new
                         {
-                            Id = "2cd7b23b-cb2e-4602-bcbf-edd148bde44b",
+                            Id = new Guid("6edcdec4-4bb2-4864-84b0-79a5f1bcaca3"),
                             Description = "This category will hold products characterised as books",
                             IsActive = true,
                             LastUpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -62,7 +63,7 @@ namespace ProductManagement.Persistence.Migrations
                         },
                         new
                         {
-                            Id = "3cd7b23b-cb2e-4602-bcbf-edd148bde44b",
+                            Id = new Guid("8ba56c28-4054-44ec-9958-e5dabcde6366"),
                             Description = "This category will hold products characterised as clothes",
                             IsActive = true,
                             LastUpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -72,8 +73,9 @@ namespace ProductManagement.Persistence.Migrations
 
             modelBuilder.Entity("ProductManagement.Domain.Entities.Gallery", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -93,8 +95,8 @@ namespace ProductManagement.Persistence.Migrations
                     b.Property<string>("Placeholder")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProductId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -108,11 +110,12 @@ namespace ProductManagement.Persistence.Migrations
 
             modelBuilder.Entity("ProductManagement.Domain.Entities.Product", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("CategoryId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -138,8 +141,8 @@ namespace ProductManagement.Persistence.Migrations
                     b.Property<string>("SKU")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SellerCategoryId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("SellerCategoryId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -155,8 +158,9 @@ namespace ProductManagement.Persistence.Migrations
 
             modelBuilder.Entity("ProductManagement.Domain.Entities.SellerCategory", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -180,8 +184,9 @@ namespace ProductManagement.Persistence.Migrations
 
             modelBuilder.Entity("ProductManagement.Domain.Entities.SellerSubCategory", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -195,8 +200,8 @@ namespace ProductManagement.Persistence.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SellerCategoryId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("SellerCategoryId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -210,11 +215,12 @@ namespace ProductManagement.Persistence.Migrations
 
             modelBuilder.Entity("ProductManagement.Domain.Entities.SubCategory", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("CategoryId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -240,8 +246,9 @@ namespace ProductManagement.Persistence.Migrations
 
             modelBuilder.Entity("ProductManagement.Domain.Entities.Varient", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -265,8 +272,9 @@ namespace ProductManagement.Persistence.Migrations
 
             modelBuilder.Entity("ProductManagement.Domain.Entities.VarientValue", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -280,8 +288,8 @@ namespace ProductManagement.Persistence.Migrations
                     b.Property<DateTime>("LastUpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ProductId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -289,8 +297,8 @@ namespace ProductManagement.Persistence.Migrations
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("VarientId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("VarientId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -305,7 +313,9 @@ namespace ProductManagement.Persistence.Migrations
                 {
                     b.HasOne("ProductManagement.Domain.Entities.Product", "Product")
                         .WithMany("Galleries")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Product");
                 });
@@ -314,11 +324,15 @@ namespace ProductManagement.Persistence.Migrations
                 {
                     b.HasOne("ProductManagement.Domain.Entities.SubCategory", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ProductManagement.Domain.Entities.SellerSubCategory", "SellerCategory")
                         .WithMany("Products")
-                        .HasForeignKey("SellerCategoryId");
+                        .HasForeignKey("SellerCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Category");
 
@@ -329,7 +343,9 @@ namespace ProductManagement.Persistence.Migrations
                 {
                     b.HasOne("ProductManagement.Domain.Entities.SellerCategory", "SellerCategory")
                         .WithMany("SubCategories")
-                        .HasForeignKey("SellerCategoryId");
+                        .HasForeignKey("SellerCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("SellerCategory");
                 });
@@ -338,7 +354,9 @@ namespace ProductManagement.Persistence.Migrations
                 {
                     b.HasOne("ProductManagement.Domain.Entities.Category", "Category")
                         .WithMany("SubCategories")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Category");
                 });
@@ -347,11 +365,15 @@ namespace ProductManagement.Persistence.Migrations
                 {
                     b.HasOne("ProductManagement.Domain.Entities.Product", "Product")
                         .WithMany("Varients")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ProductManagement.Domain.Entities.Varient", "Varient")
                         .WithMany("VarientValues")
-                        .HasForeignKey("VarientId");
+                        .HasForeignKey("VarientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Product");
 
