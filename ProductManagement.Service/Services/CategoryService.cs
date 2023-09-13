@@ -2,6 +2,7 @@
 using ProductManagement.Persistence.Repositories.Abstracts;
 using ProductManagement.Service.Services.Abstracts;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProductManagement.Service.Services
@@ -13,6 +14,15 @@ namespace ProductManagement.Service.Services
 		public CategoryService(ICategoryRepository categoryRepo)
 		{
 			_categoryRepo = categoryRepo;
+		}
+
+		public async Task<Category> CreateCategory(Category category)
+		{
+			if (_categoryRepo.GetTableNoTracking().Where(c => c.Name.Equals(category.Name)).Any())
+				return null;
+
+			var x = await _categoryRepo.AddAsync(category);
+			return x;
 		}
 
 		public async Task<ICollection<Category>> GetCategories()

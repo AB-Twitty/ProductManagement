@@ -8,5 +8,6 @@ namespace ProductManagement.Service.Services.Abstracts
 	{
 		Task<Category> GetCategoryById(string Id);
 		Task<ICollection<Category>> GetCategories();
+		Task<Category> CreateCategory(Category category);
 	}
 }

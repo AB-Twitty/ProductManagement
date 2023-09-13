@@ -8,8 +8,9 @@ namespace ProductManagement.Core.Mapping
 	{
 		public MappingProfile()
 		{
-			CreateMap<Category, CategoryDto>();
+			CreateMap<Category, CategoryDto>().ReverseMap();
 			CreateMap<Category, CategoryListDto>();
+			CreateMap<Category, CategoryCreateDto>().ReverseMap();
 		}
 	}
 }

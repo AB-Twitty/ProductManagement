@@ -58,6 +58,16 @@ namespace ProductManagement.Core.Models
 			};
 		}
 
+		public Response<T> UnprocessableEntity<T>(string message = null) where T : class
+		{
+			return new Response<T>
+			{
+				StatusCode = HttpStatusCode.UnprocessableEntity,
+				Message = message == null ? "Unprocessable Entity" : message,
+				Succeded = false
+			};
+		}
+
 
 		public Response<T> BadRequest<T>(string message = null) where T : class
 		{
