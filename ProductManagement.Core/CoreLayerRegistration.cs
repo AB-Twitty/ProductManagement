@@ -1,5 +1,7 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using ProductManagement.Core.Models;
 using System.Reflection;
 
 namespace ProductManagement.Core
@@ -10,6 +12,10 @@ namespace ProductManagement.Core
 		{
 			services.AddAutoMapper(Assembly.GetExecutingAssembly());
 			services.AddMediatR(Assembly.GetExecutingAssembly());
+			services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+
+			services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
 			return services;
 		}

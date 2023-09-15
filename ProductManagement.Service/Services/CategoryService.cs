@@ -1,4 +1,5 @@
-﻿using ProductManagement.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using ProductManagement.Domain.Entities;
 using ProductManagement.Persistence.Repositories.Abstracts;
 using ProductManagement.Service.Services.Abstracts;
 using System.Collections.Generic;
@@ -34,6 +35,11 @@ namespace ProductManagement.Service.Services
 		{
 			var x = await _categoryRepo.GetByIdAsync(Id);
 			return x;
+		}
+
+		public async Task<bool> IsNameExist(string Name)
+		{
+			return await _categoryRepo.GetTableNoTracking().AnyAsync(x => x.Name.ToUpper().Equals(Name.ToUpper()));
 		}
 	}
 }
