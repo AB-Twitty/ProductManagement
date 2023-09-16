@@ -3,11 +3,12 @@ using ProductManagement.Service.Services.Abstracts;
 
 namespace ProductManagement.Core.DTOs.Category.Validators
 {
-	public class CategoryCreateDtoValidator : AbstractValidator<CategoryCreateDto>
+
+	public class CategoryEditDtoValidator : AbstractValidator<CategoryEditDto>
 	{
 		private readonly ICategoryService _categoryService;
 
-		public CategoryCreateDtoValidator(ICategoryService categoryService)
+		public CategoryEditDtoValidator(ICategoryService categoryService)
 		{
 			_categoryService = categoryService;
 
@@ -17,6 +18,10 @@ namespace ProductManagement.Core.DTOs.Category.Validators
 
 		private void ApplyValidationRules()
 		{
+			RuleFor(x => x.Id)
+				.NotNull().WithMessage("{PropertyName} can bot be null.")
+				.NotEmpty().WithMessage("{PropertyName} can not be empty.");
+
 			RuleFor(x => x.Name)
 				.NotEmpty().WithMessage("{PropertyName} can not be empty.")
 				.NotNull().WithMessage("{PropertyName} can bot be null.");
@@ -32,9 +37,9 @@ namespace ProductManagement.Core.DTOs.Category.Validators
 		private void ApplyCustomValidationRules()
 		{
 			RuleFor(x => x.Name)
-				.MustAsync(async (Key, CancellationToken) =>
+				.MustAsync(async (Model, Key, CancellationToken) =>
 				{
-					return !await _categoryService.IsNameExist(Key);
+					return !await _categoryService.IsNameExistExcludeSelf(Key, Model.Id);
 				}).WithMessage("{PropertyValue} already exists.");
 		}
 	}

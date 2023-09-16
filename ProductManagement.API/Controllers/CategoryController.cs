@@ -25,5 +25,9 @@ namespace ProductManagement.API.Controllers
 		[HttpPost(Router.CategoryRouting.Create)]
 		public async Task<IActionResult> CreateCategory([FromBody] CategoryCreateDto createDto) =>
 			Respond(await Mediator.Send(new CreateCategoryCommand { CategoryCreateDto = createDto }));
+
+		[HttpPut(Router.CategoryRouting.Update)]
+		public async Task<IActionResult> UpdateCategory([FromBody] CategoryEditDto editDto) =>
+			Respond(await Mediator.Send(new EditCategoryCommand { CategoryEditDto = editDto }));
 	}
 }

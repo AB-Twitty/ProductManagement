@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
+using ProductManagement.Domain.Bases;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProductManagement.Persistence.Repositories.Abstracts
 {
-	public interface IGenericRepository<T> where T : class
+	public interface IGenericRepository<T> where T : BaseEntity
 	{
 		Task<T> GetByIdAsync(string Id);
 		Task<ICollection<T>> GetAllAsync();

@@ -26,6 +26,12 @@ namespace ProductManagement.Service.Services
 			return x;
 		}
 
+		public async Task<string> EditCategory(Category category)
+		{
+			await _categoryRepo.UpdateAsync(category);
+			return "success";
+		}
+
 		public async Task<ICollection<Category>> GetCategories()
 		{
 			return await _categoryRepo.GetAllAsync();
@@ -45,9 +51,21 @@ namespace ProductManagement.Service.Services
 			return quearable;
 		}
 
-		public async Task<bool> IsNameExist(string Name)
+		public async Task<bool> IsCategoryExist(string id)
 		{
-			return await _categoryRepo.GetTableNoTracking().AnyAsync(x => x.Name.ToUpper().Equals(Name == null ? "" : Name.ToUpper()));
+			return await GetCategoryById(id) == null ? false : true;
+		}
+
+		public async Task<bool> IsNameExist(string name)
+		{
+			return await _categoryRepo.GetTableNoTracking().AnyAsync(x => x.Name.ToUpper().Equals(name == null ? "" : name.ToUpper()));
+		}
+
+		public async Task<bool> IsNameExistExcludeSelf(string name, string id)
+		{
+			return await _categoryRepo.GetTableNoTracking().AnyAsync(x =>
+									x.Name.ToUpper().Equals(name.ToUpper()) &&
+									!x.Id.Equals(id));
 		}
 	}
 }

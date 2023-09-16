@@ -11,6 +11,7 @@ namespace ProductManagement.Core.Mapping
 			CreateMap<Category, CategoryDto>().ReverseMap();
 			CreateMap<Category, CategoryListDto>();
 			CreateMap<Category, CategoryCreateDto>().ReverseMap();
+			CreateMap<Category, CategoryEditDto>().ReverseMap();
 		}
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using ProductManagement.Domain.Bases;
 using ProductManagement.Persistence.Context;
 using ProductManagement.Persistence.Repositories.Abstracts;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ProductManagement.Persistence.Repositories
 {
-	public class GenericRepository<T> : IGenericRepository<T> where T : class
+	public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 	{
 		private readonly ProductDbContext _context;
 
@@ -60,7 +61,7 @@ namespace ProductManagement.Persistence.Repositories
 
 		public async Task<T> GetByIdAsync(string Id)
 		{
-			return await _context.Set<T>().FindAsync(Guid.Parse(Id));
+			return await _context.Set<T>().AsNoTracking().Where(x => x.Id.Equals(Guid.Parse(Id))).FirstOrDefaultAsync();
 		}
 
 		public IQueryable<T> GetTableAsTracking()

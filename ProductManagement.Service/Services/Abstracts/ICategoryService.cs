@@ -12,5 +12,8 @@ namespace ProductManagement.Service.Services.Abstracts
 		Task<Category> CreateCategory(Category category);
 		Task<bool> IsNameExist(string Name);
 		IQueryable<Category> GetQuerableForPagination(string search);
+		Task<bool> IsNameExistExcludeSelf(string key, string id);
+		Task<bool> IsCategoryExist(string id);
+		Task<string> EditCategory(Category category);
 	}
 }
