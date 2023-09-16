@@ -39,7 +39,7 @@ namespace ProductManagement.Service.Services
 
 		public async Task<bool> IsNameExist(string Name)
 		{
-			return await _categoryRepo.GetTableNoTracking().AnyAsync(x => x.Name.ToUpper().Equals(Name.ToUpper()));
+			return await _categoryRepo.GetTableNoTracking().AnyAsync(x => x.Name.ToUpper().Equals(Name == null ? "" : Name.ToUpper()));
 		}
 	}
 }

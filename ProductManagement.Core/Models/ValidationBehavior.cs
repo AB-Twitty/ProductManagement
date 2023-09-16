@@ -32,7 +32,7 @@ namespace ProductManagement.Core.Models
 
 			if (failures.Any())
 			{
-				throw new ValidationException(failures.Select(x => x.PropertyName + " : " + x.ErrorMessage).FirstOrDefault());
+				throw new ValidationException(failures.Select(x => x.PropertyName + " : " + x.ErrorMessage).FirstOrDefault(), failures);
 			}
 
 			return await next();
@@ -44,10 +44,11 @@ namespace ProductManagement.Core.Models
 		{
 			var failures = new List<ValidationFailure>();
 
-			var properties = typeof(TRequest).GetProperties();
+			var properties = typeof(TRequest).GetProperties().Where(p => p.GetValue(request) != null);
 			foreach (var property in properties)
 			{
 				var (validator, validationContext) = GetValidatorForType(request, property);
+				if (validator == null) continue;
 				var result = await validator.ValidateAsync(validationContext);
 				failures.AddRange(result.Errors);
 			}

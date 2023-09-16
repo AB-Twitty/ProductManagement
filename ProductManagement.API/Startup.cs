@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ProductManagement.Core;
+using ProductManagement.Core.Middlewares;
 using ProductManagement.Persistence;
 using ProductManagement.Service;
 
@@ -44,6 +45,8 @@ namespace ProductManagement.API
 				app.UseSwagger();
 				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProductManagement.API v1"));
 			}
+
+			app.UseMiddleware<ErrorHandlingMiddleware>();
 
 			app.UseHttpsRedirection();
 
