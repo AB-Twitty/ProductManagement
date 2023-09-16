@@ -29,5 +29,9 @@ namespace ProductManagement.API.Controllers
 		[HttpPut(Router.CategoryRouting.Update)]
 		public async Task<IActionResult> UpdateCategory([FromBody] CategoryEditDto editDto) =>
 			Respond(await Mediator.Send(new EditCategoryCommand { CategoryEditDto = editDto }));
+
+		[HttpDelete(Router.CategoryRouting.Delete)]
+		public async Task<IActionResult> DeleteCategory([FromRoute] string id) =>
+			Respond(await Mediator.Send(new DeleteCategoryCommand { Id = id }));
 	}
 }

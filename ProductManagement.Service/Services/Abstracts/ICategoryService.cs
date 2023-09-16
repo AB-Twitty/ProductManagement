@@ -15,5 +15,6 @@ namespace ProductManagement.Service.Services.Abstracts
 		Task<bool> IsNameExistExcludeSelf(string key, string id);
 		Task<bool> IsCategoryExist(string id);
 		Task<string> EditCategory(Category category);
+		Task<string> DeleteCategory(Category category);
 	}
 }

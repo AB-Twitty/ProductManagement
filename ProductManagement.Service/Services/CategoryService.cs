@@ -26,6 +26,12 @@ namespace ProductManagement.Service.Services
 			return x;
 		}
 
+		public async Task<string> DeleteCategory(Category category)
+		{
+			await _categoryRepo.DeleteAsync(category);
+			return "success";
+		}
+
 		public async Task<string> EditCategory(Category category)
 		{
 			await _categoryRepo.UpdateAsync(category);
