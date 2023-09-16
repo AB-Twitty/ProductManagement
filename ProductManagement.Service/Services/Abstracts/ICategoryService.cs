@@ -1,5 +1,6 @@
 ﻿using ProductManagement.Domain.Entities;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProductManagement.Service.Services.Abstracts
@@ -10,5 +11,6 @@ namespace ProductManagement.Service.Services.Abstracts
 		Task<ICollection<Category>> GetCategories();
 		Task<Category> CreateCategory(Category category);
 		Task<bool> IsNameExist(string Name);
+		IQueryable<Category> GetQuerableForPagination(string search);
 	}
 }

@@ -37,6 +37,14 @@ namespace ProductManagement.Service.Services
 			return x;
 		}
 
+		public IQueryable<Category> GetQuerableForPagination(string search)
+		{
+			var quearable = _categoryRepo.GetTableNoTracking().AsQueryable();
+			if (search != null)
+				quearable = quearable.Where(c => c.Name.Contains(search));
+			return quearable;
+		}
+
 		public async Task<bool> IsNameExist(string Name)
 		{
 			return await _categoryRepo.GetTableNoTracking().AnyAsync(x => x.Name.ToUpper().Equals(Name == null ? "" : Name.ToUpper()));

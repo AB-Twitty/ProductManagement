@@ -14,6 +14,10 @@ namespace ProductManagement.API.Controllers
 		public async Task<IActionResult> GetCategories() =>
 			Respond(await Mediator.Send(new GetCategoryListQuery()));
 
+		[HttpGet(Router.CategoryRouting.Paginated)]
+		public async Task<IActionResult> GetCategoriesPaginated([FromQuery] GetCategoryPaginatedListQuery query) =>
+			Respond(await Mediator.Send(query));
+
 		[HttpGet(Router.CategoryRouting.GetById)]
 		public async Task<IActionResult> GetCategoryById([FromRoute] string id) =>
 			Respond(await Mediator.Send(new GetCategoryQuery { Id = id }));

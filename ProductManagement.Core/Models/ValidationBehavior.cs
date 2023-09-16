@@ -38,8 +38,6 @@ namespace ProductManagement.Core.Models
 			return await next();
 		}
 
-
-
 		private async Task<List<ValidationFailure>> ValidateInnerProperties(TRequest request)
 		{
 			var failures = new List<ValidationFailure>();
