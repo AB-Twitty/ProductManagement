@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ProductManagement.Core;
 using ProductManagement.Core.Middlewares;
+using ProductManagement.Identity;
 using ProductManagement.Persistence;
 using ProductManagement.Service;
 
@@ -33,6 +34,7 @@ namespace ProductManagement.API
 			services.ConfigurePersistenceLayer(Configuration);
 			services.ConfigureServiceLayer();
 			services.ConfigureCoreLayer();
+			services.ConfigureIdentityLayer(Configuration);
 			services.AddHttpContextAccessor();
 		}
 

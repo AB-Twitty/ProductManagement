@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProductManagement.Core\ProductManagement.Core.csproj" />
+    <ProjectReference Include="..\ProductManagement.Identity\ProductManagement.Identity.csproj" />
     <ProjectReference Include="..\ProductManagement.Persistence\ProductManagement.Persistence.csproj" />
     <ProjectReference Include="..\ProductManagement.Service\ProductManagement.Service.csproj" />
   </ItemGroup>
