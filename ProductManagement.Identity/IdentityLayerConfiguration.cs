@@ -39,7 +39,6 @@ namespace ProductManagement.Identity
 
 			}).AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
 
-
 			return services;
 		}
 	}
