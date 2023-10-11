@@ -13,8 +13,9 @@ namespace ProductManagement.Core.Extensions
 		{
 			if (querable == null) throw new Exception("Empty Querable");
 
-			currentPage = currentPage <= 0 ? 1 : currentPage;
 			pageSize = pageSize <= 0 ? 10 : pageSize;
+			currentPage = currentPage <= 0 || currentPage > querable.Count() / pageSize ? 1 : currentPage;
+
 
 			return new PaginatedResponse<T>
 			(
